@@ -1,4 +1,5 @@
 FOREVER=./node_modules/.bin/forever
+from ?= master
 
 test:
 	./node_modules/.bin/mocha ./tests/*_test.js -R spec
@@ -40,6 +41,9 @@ nginx/reload:
 
 nginx.conf:
 	sed -e "s/CURRENT_USER/$(USER)/g" .nginx.conf > nginx.conf
+
+deploy:
+	@./scripts/deploy.sh
 
 .PHONY:
 # vim: ft=make:
